@@ -15,9 +15,11 @@ const port = process.env.PORT || 5000;
 
 const app = express();
 
+const allowedOrigins = process.env.ALLOWED_ORIGINS;
+
 app.use(
   cors({
-    origin: ["https://lwtaskmng.netlify.app", "http://localhost:3000", "http://localhost:3001", "http://localhost:5173"],
+    origin: [{allowedOrigins}, "http://localhost:3000", "http://localhost:3001", "http://localhost:5173"],
     methods: ["GET", "POST", "DELETE", "PUT"],
     credentials: true,
   })
